@@ -1,0 +1,11 @@
+body.page-vray-render .page-hero{
+  background:linear-gradient(135deg, rgba(14,165,233,0.14), transparent);
+}
+
+body.page-vray-render .panel{
+  background:linear-gradient(180deg, var(--panel), color-mix(in oklab,var(--panel), var(--bg) 32%));
+}
+
+body.page-vray-render .services-list li{
+  background:color-mix(in oklab, var(--panel) 80%, var(--bg));
+}

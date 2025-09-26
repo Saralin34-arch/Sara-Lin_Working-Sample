@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+  <rect width="1200" height="800" fill="#f0fdfb" />
+  <rect x="220" y="180" width="760" height="440" rx="32" fill="#0ea5e9" opacity="0.12" stroke="#0ea5e9" stroke-width="14" />
+  <path d="M320 540l160-240 140 180 120-160 180 220" fill="none" stroke="#14b8a6" stroke-width="18" stroke-linecap="round" />
+  <g fill="#0ea5e9" opacity="0.8">
+    <circle cx="440" cy="320" r="26" />
+    <circle cx="620" cy="460" r="26" />
+    <circle cx="820" cy="340" r="26" />
+  </g>
+  <text x="50%" y="120" text-anchor="middle" font-size="52" font-family="'Segoe UI', sans-serif" fill="#0f172a">WebGL Material Lab</text>
+</svg>

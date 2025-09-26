@@ -1,0 +1,11 @@
+body.page-grasshopper-rhino .page-hero{
+  background:linear-gradient(135deg, color-mix(in oklab, var(--brand) 24%, transparent), transparent);
+}
+
+body.page-grasshopper-rhino .panel{
+  background:linear-gradient(180deg, var(--panel), color-mix(in oklab,var(--panel), var(--bg) 30%));
+}
+
+body.page-grasshopper-rhino .services-list li{
+  background:color-mix(in oklab, var(--panel) 80%, var(--bg));
+}

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+  <rect width="1200" height="800" fill="#f8fafc" />
+  <path d="M140 640l220-420 180 260 200-360 320 520" fill="none" stroke="#0ea5e9" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M160 580h880" stroke="#cbd5f5" stroke-width="14" stroke-dasharray="24 24" />
+  <circle cx="980" cy="200" r="68" fill="#fde68a" stroke="#f59e0b" stroke-width="16" />
+  <text x="60" y="120" font-size="54" font-family="'Segoe UI', sans-serif" fill="#0f172a">Solar-aware massing</text>
+</svg>

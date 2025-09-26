@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1024">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 24px;
+      }
+
+      .cls-1, .cls-2 {
+        fill: #535b6b;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7 {
+        font-family: MLingWaiMedium-TC, 'LingWai TC';
+      }
+
+      .cls-2, .cls-3, .cls-5, .cls-7 {
+        font-size: 18px;
+      }
+
+      .cls-3 {
+        fill: #92a2ad;
+      }
+
+      .cls-4 {
+        fill: #89a4bd;
+      }
+
+      .cls-4, .cls-6 {
+        font-size: 23.87px;
+      }
+
+      .cls-5 {
+        fill: #a5d5d8;
+      }
+
+      .cls-8 {
+        stroke-dasharray: 3;
+      }
+
+      .cls-8, .cls-9, .cls-10 {
+        fill: none;
+        stroke-miterlimit: 10;
+        stroke-width: .25px;
+      }
+
+      .cls-8, .cls-10 {
+        stroke: #999;
+      }
+
+      .cls-6 {
+        fill: #b4c0c8;
+      }
+
+      .cls-7 {
+        fill: #6f95b5;
+      }
+
+      .cls-9 {
+        stroke: #000;
+      }
+
+      .cls-10 {
+        stroke-dasharray: 3 3;
+      }
+
+      .cls-11 {
+        fill: #999;
+      }
+    </style>
+  </defs>
+  <g>
+    <line class="cls-10" x1="30.32" y1="422.71" x2="1220.56" y2="422.71"/>
+    <polygon class="cls-11" points="1213.17 426.69 1212.75 425.51 1220.44 422.71 1212.75 419.91 1213.17 418.74 1224.09 422.71 1213.17 426.69"/>
+  </g>
+  <circle class="cls-11" cx="186.27" cy="423.82" r="2.14"/>
+  <line class="cls-8" x1="186.27" y1="515" x2="186.27" y2="423.82"/>
+  <text class="cls-2" transform="translate(142.8 500.97)"><tspan x="0" y="0">Architectural </tspan><tspan x="26.62" y="21.6">Design</tspan></text>
+  <line class="cls-8" x1="336.35" y1="490.32" x2="336.35" y2="374.32"/>
+  <text class="cls-7" transform="translate(284.77 363.61)"><tspan x="0" y="0">Building </tspan><tspan x="6.15" y="21.6">Science</tspan></text>
+  <circle class="cls-11" cx="336.35" cy="404.15" r="2.14"/>
+  <line class="cls-8" x1="467.87" y1="490.32" x2="467.87" y2="374.32"/>
+  <text class="cls-3" transform="translate(428.57 409.96)"><tspan x="0" y="0">Environemtal</tspan><tspan x="8.11" y="21.6">/ Building </tspan><tspan x="6.03" y="43.2">Simluation</tspan></text>
+  <circle class="cls-11" cx="467.87" cy="374.32" r="2.14"/>
+  <circle class="cls-9" cx="321.3" cy="386.77" r="76.09"/>
+  <circle class="cls-9" cx="470.01" cy="419.75" r="93.33"/>
+  <circle class="cls-9" cx="188.41" cy="500.97" r="61.83"/>
+  <line class="cls-8" x1="625.68" y1="422.91" x2="625.68" y2="480.91"/>
+  <circle class="cls-11" cx="625.68" cy="480.91" r="2.14"/>
+  <text class="cls-5" transform="translate(611.55 515)"><tspan x="0" y="0">BIM</tspan><tspan x="-13.77" y="21.6">Modeling</tspan></text>
+  <circle class="cls-9" cx="627.83" cy="521.58" r="71.38"/>
+  <line class="cls-8" x1="729.66" y1="305.61" x2="729.66" y2="421.61"/>
+  <circle class="cls-11" cx="729.66" cy="423.65" r="2.14"/>
+  <text class="cls-3" transform="translate(712.79 457.75)"><tspan x="0" y="0">Energy</tspan><tspan x="-8.64" y="21.6">Modeling</tspan></text>
+  <circle class="cls-9" cx="733.94" cy="464.32" r="71.38"/>
+  <text class="cls-6" transform="translate(821.77 362.35)"><tspan x="0" y="0">Parametric </tspan><tspan x="23.13" y="28.65">Design</tspan></text>
+  <circle class="cls-9" cx="874.31" cy="374.32" r="94.67"/>
+  <text class="cls-4" transform="translate(992.21 422.91)"><tspan x="0" y="0">Generative</tspan><tspan x="16.5" y="28.65" xml:space="preserve"> Design</tspan></text>
+  <circle class="cls-9" cx="1037.22" cy="435.71" r="94.67"/>
+  <text class="cls-1" transform="translate(828.27 524.84)"><tspan x="0" y="0">Programming </tspan><tspan x="45.09" y="28.8">in</tspan><tspan x="28.18" y="57.6">Design</tspan></text>
+  <circle class="cls-9" cx="886.88" cy="539.34" r="114.7"/>
+  <line class="cls-8" x1="874.31" y1="382.33" x2="874.31" y2="502.85"/>
+  <line class="cls-8" x1="1035.2" y1="422.91" x2="1035.2" y2="480.91"/>
+  <circle class="cls-11" cx="1035.2" cy="483.24" r="2.14"/>
+</svg>

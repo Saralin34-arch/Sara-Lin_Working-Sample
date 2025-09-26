@@ -1,0 +1,167 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Animated Grid Diagram — Interest Zones</title>
+  <meta name="color-scheme" content="light dark">
+  <style>
+    :root{
+      --ink:#535b6b;
+      --grid:#9aa0a6;
+      --dot:#9aa0a6;
+      --blue-soft:#89a4bd;
+      --blue-deep:#6f95b5;
+      --slate:#2f3a4e;
+    }
+    @media (prefers-color-scheme: dark){
+      :root{ --ink:#dfe7ef; --grid:#2a3644; --dot:#4f5d72; --blue-soft:#5b7a95; --blue-deep:#879db0; --slate:#c3d0dc; }
+    }
+    html,body{height:100%;background:transparent;overflow:hidden}
+    body{margin:0;background:transparent;color:var(--ink);font-family:'Poppins','MLingWaiMedium-TC','PingFang TC',system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial;font-size:18px}
+    #chart{width:100%;height:100%}
+    .label{font-size:18px;fill:var(--ink);text-anchor:middle;dominant-baseline:middle;letter-spacing:0.01em}
+  </style>
+</head>
+<body>
+  <svg id="chart" role="img" aria-label="Animated grid diagram"></svg>
+
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <script>
+  const svg = d3.select('#chart');
+  const SCALE = 1.5;
+  const cols = 7, rows = 4;
+  const baseSpacingY = 120;
+  const spacingY = baseSpacingY * SCALE;
+  const spacingX = (baseSpacingY * 1.5) * SCALE;
+  const sidePad = 40 * SCALE;
+  const topPad = 20;
+  const bottomPad = 90 * SCALE;
+  const w = cols * spacingX + sidePad * 2;
+  const h = rows * spacingY + topPad + bottomPad;
+  svg.attr('viewBox', `0 0 ${w} ${h}`).attr('preserveAspectRatio','xMidYMid meet');
+  svg.style('background','none');
+
+  // Layers
+  const grid = svg.append('g').attr('transform', `translate(${sidePad},${topPad})`);
+  const layer = svg.append('g').attr('transform', `translate(${sidePad},${topPad})`);
+
+  // Grid lines (dashed) + dots (grey)
+  const topVariants = [1.0, 0.55, 0.32, 0.88, 0.47, 0.7, 0.4, 0.96];
+  const bottomVariants = [0.3, 0.48, 0.22, 0.4, 0.28, 0.35, 0.18, 0.44];
+  const leftVariants = [0.25, 0.45, 0.32, 0.12, 0.4, 0.2];
+  const rightVariants = [0.35, 0.18, 0.42, 0.28, 0.5, 0.24];
+
+  for(let x=0; x<=cols; x++){
+    const topExtra = topVariants[x % topVariants.length] * 140 * SCALE;
+    const bottomExtra = bottomVariants[x % bottomVariants.length] * 160 * SCALE;
+    grid.append('line')
+      .attr('x1', x*spacingX).attr('y1', -topExtra)
+      .attr('x2', x*spacingX).attr('y2', rows*spacingY + bottomExtra)
+      .attr('stroke','var(--grid)').attr('stroke-opacity',0.32).attr('stroke-width',0.9)
+      .attr('stroke-dasharray','6 8');
+  }
+  for(let y=0; y<=rows; y++){
+    const leftExtra = leftVariants[y % leftVariants.length] * 160 * SCALE;
+    const rightExtra = rightVariants[y % rightVariants.length] * 180 * SCALE;
+    grid.append('line')
+      .attr('x1', -leftExtra).attr('y1', y*spacingY)
+      .attr('x2', cols*spacingX + rightExtra).attr('y2', y*spacingY)
+      .attr('stroke','var(--grid)').attr('stroke-opacity',0.35).attr('stroke-width',0.9)
+      .attr('stroke-dasharray','6 8');
+  }
+  for(let x=0; x<=cols; x++){
+    for(let y=0; y<=rows; y++){
+      grid.append('circle').attr('cx', x*spacingX).attr('cy', y*spacingY).attr('r', 2.5)
+          .attr('fill','var(--dot)').attr('opacity',0.7);
+    }
+  }
+
+  // Nodes (positions in grid units, radii in px)
+  const nodes = [
+    { name:'Architectural Design',    x:0.75, y:3.2, r:82 },
+    { name:'Generative Design',       x:1.6, y:2.0, r:66 },
+    { name:'Grasshopper',             x:2.5, y:2.6, r:54 },
+    { name:'Rhino in Revit',          x:3.7, y:3.3, r:48 },
+    { name:'BIM',                     x:4.6, y:3.25, r:60 },
+    { name:'Revit',                   x:3.6, y:1.75, r:40 },
+    { name:'Python',                  x:2.1, y:0.95, r:48 },
+    { name:'Programming',             x:3.6, y:0.35, r:38 },
+    { name:'Environmental Analysis',  x:5.6, y:2.25, r:72 },
+    { name:'Building Simulation',     x:5.1, y:0.75, r:44 },
+    { name:'Urban Analysis',          x:6.25, y:3.15, r:54 },
+    { name:'AI',                      x:6.5, y:0.65, r:36 },
+    { name:'Web Development',         x:6.45, y:2.4, r:48 },
+    { name:'Digital Fabrication',     x:1.0, y:0.75, r:62 },
+    { name:'Performance Modeling',    x:4.9, y:1.7, r:58 }
+  ].map(d => ({
+    ...d,
+    r: d.r * SCALE,
+    xpx: d.x * spacingX,
+    ypx: d.y * spacingY,
+    vx: (Math.random()*2-1)*0.6, vy: (Math.random()*2-1)*0.6 // initial velocity
+  }));
+
+  // Blue → gray stroke scale (by size)
+  const colorScale = d3.scaleLinear()
+    .domain(d3.extent(nodes, d => d.r))
+    .range(['#60a5fa', '#1f2937']) // blue → slate gray
+    .interpolate(d3.interpolateLab);
+
+  // Draw nodes
+  const g = layer.selectAll('g.node').data(nodes).enter().append('g').attr('class','node');
+  const circles = g.append('circle')
+    .attr('cx', d => d.xpx).attr('cy', d => d.ypx).attr('r', d => d.r)
+    .attr('fill','none')
+    .attr('stroke', d => d.stroke || colorScale(d.r))
+    .attr('stroke-width', 1.2)
+    .attr('opacity', 0.95);
+
+  const labels = g.append('text')
+    .attr('class','label')
+    .attr('x', d => d.xpx).attr('y', d => d.ypx)
+    .text(d => d.name);
+
+  // Animation controls
+  const SPEED = 1.15;
+  const WANDER = 0.55;
+
+  let running = true;
+
+  // Keep moving randomly over the grid
+  // Use a gentle random-walk with boundary bounce and slight grid "magnetism"
+
+  d3.timer((elapsed) => {
+    if(!running) return;
+
+    nodes.forEach(d => {
+      // Random perturbation
+      d.vx += (Math.random()*2-1) * 0.05 * WANDER;
+      d.vy += (Math.random()*2-1) * 0.05 * WANDER;
+      // Damping
+      d.vx *= 0.985; d.vy *= 0.985;
+      // Move
+      d.xpx += d.vx * SPEED;
+      d.ypx += d.vy * SPEED;
+
+      // Soft attraction to nearest grid intersection
+      const gx = Math.round(d.xpx / spacingX) * spacingX;
+      const gy = Math.round(d.ypx / spacingY) * spacingY;
+      d.xpx += (gx - d.xpx) * 0.001; // tiny magnetism
+      d.ypx += (gy - d.ypx) * 0.001;
+
+      // Bounce on edges (within padded area)
+      const minX = d.r, minY = d.r, maxX = cols*spacingX - d.r, maxY = rows*spacingY - d.r;
+      if(d.xpx < minX){ d.xpx = minX; d.vx = Math.abs(d.vx); }
+      if(d.xpx > maxX){ d.xpx = maxX; d.vx = -Math.abs(d.vx); }
+      if(d.ypx < minY){ d.ypx = minY; d.vy = Math.abs(d.vy); }
+      if(d.ypx > maxY){ d.ypx = maxY; d.vy = -Math.abs(d.vy); }
+    });
+
+    circles.attr('cx', d => d.xpx).attr('cy', d => d.ypx);
+    labels.attr('x', d => d.xpx).attr('y', d => d.ypx);
+  });
+  </script>
+</body>
+</html>

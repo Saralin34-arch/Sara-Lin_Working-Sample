@@ -1,0 +1,11 @@
+body.page-environmental-design .page-hero{
+  background:linear-gradient(135deg, rgba(56,189,248,0.18), transparent);
+}
+
+body.page-environmental-design .panel{
+  background:linear-gradient(180deg, var(--panel), color-mix(in oklab,var(--panel), var(--bg) 38%));
+}
+
+body.page-environmental-design .services-list li{
+  background:color-mix(in oklab, var(--panel) 82%, var(--bg));
+}

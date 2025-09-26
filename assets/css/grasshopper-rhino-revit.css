@@ -1,0 +1,11 @@
+body.page-grasshopper-revit .page-hero{
+  background:linear-gradient(135deg, color-mix(in oklab, var(--brand) 18%, transparent), transparent);
+}
+
+body.page-grasshopper-revit .panel{
+  background:linear-gradient(180deg, var(--panel), color-mix(in oklab,var(--panel), var(--bg) 35%));
+}
+
+body.page-grasshopper-revit .services-list li{
+  background:color-mix(in oklab, var(--panel) 85%, var(--bg));
+}

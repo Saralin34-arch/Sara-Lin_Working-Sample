@@ -1,0 +1,36 @@
+@import url('spotlight.css');
+
+.bio-material-page .spotlight-hero{padding-left:0;padding-right:0}
+
+/* New wrapper holds background spanning hero + detail */
+.bio-material-page .bio-hero-bg{position:relative;overflow:visible}
+.bio-material-page .bio-hero-bg::before{content:"";position:absolute;left:0;right:0;top:0;bottom:0;background:url('../img/IMG_8622.JPG') center/cover no-repeat;filter:brightness(0.55);opacity:0.95;z-index:0;min-height:720px}
+.bio-material-page .spotlight-hero .spotlight-wrap{position:relative;z-index:1}
+.bio-material-page .spotlight-hero .spotlight-wrap{max-width:960px;margin:0 auto;padding:0 var(--layout-gutter)}
+.bio-material-page .spotlight-wrap-left{margin-left:0;text-align:center;color:#f8fbff;position:relative;z-index:1}
+.bio-material-page .spotlight-hero .spotlight-wrap h1{display:flex;flex-direction:column;align-items:center;gap:8px;margin:0 auto}
+.bio-material-page .spotlight-hero .spotlight-wrap .title-line{font-size:clamp(2.6rem,5.6vw,5rem);white-space:nowrap}
+.bio-material-page .spotlight-hero .spotlight-wrap .title-subline{font-size:clamp(2.4rem,5.4vw,4.6rem);white-space:nowrap}
+.bio-material-page .spotlight-wrap-left .lead{max-width:60ch;margin:18px auto 0}
+.bio-material-page .spotlight-wrap-left .lead{color:#e2ecf8}
+.bio-material-page .spotlight-wrap-left .eyebrow{color:#d0dbe8}
+
+.bio-detail{margin-top:300px;padding:40px var(--layout-gutter) 80px;display:grid;grid-template-columns:1fr;gap:40px;align-items:start;justify-items:center}
+.bio-image{width:min(640px,90%);margin-left:-450px}
+.bio-image{position:relative;overflow:visible}
+.bio-image img{width:100%;height:auto;display:block;transition:transform 0.4s ease, box-shadow 0.4s ease}
+.bio-image:hover img{transform:scale(1.3);box-shadow:0 28px 60px rgba(15,23,42,0.3);}
+.bio-gallery{grid-column:1 / -1;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:26px;margin-top:54px}
+.bio-gallery figure{margin:0;display:flex;flex-direction:column;gap:12px;align-items:center}
+.bio-gallery img{width:100%;height:auto;display:block;max-width:420px}
+.bio-gallery figcaption{margin:0;color:var(--muted);font-size:0.95rem;line-height:1.5}
+
+/* Ensure images have sharp corners on this page */
+.bio-material-page img{border-radius:0}
+
+@media (max-width:900px){
+  .bio-material-page .spotlight-hero .spotlight-wrap{padding:0 clamp(24px,8vw,48px)}
+  .bio-material-page .spotlight-wrap-left{margin-left:0}
+  .bio-detail{grid-template-columns:1fr;gap:32px;padding:32px clamp(24px,8vw,48px)}
+  .bio-gallery{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+}

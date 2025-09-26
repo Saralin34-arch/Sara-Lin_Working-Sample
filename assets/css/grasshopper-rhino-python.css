@@ -1,0 +1,11 @@
+body.page-grasshopper-python .page-hero{
+  background:linear-gradient(135deg, color-mix(in oklab, var(--brand) 22%, transparent), transparent);
+}
+
+body.page-grasshopper-python .panel{
+  background:linear-gradient(180deg, var(--panel), color-mix(in oklab,var(--panel), var(--bg) 40%));
+}
+
+body.page-grasshopper-python .services-list li{
+  background:color-mix(in oklab, var(--panel) 78%, var(--bg));
+}
